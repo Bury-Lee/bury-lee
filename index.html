@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>李葬/星梦 - 个人主页</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Vue 3 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', 'Noto Serif SC', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+        .bg-banner {
+            background-image: url('./main/Image_1774187732093_334.png');
+            background-size: cover;
+            background-position: center;
+        }
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div id="app" class="min-h-screen">
+        <!-- Loading State -->
+        <div v-if="loading" class="flex h-screen items-center justify-center">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
+            <span class="ml-3 text-lg text-gray-600">加载中...</span>
+        </div>
+        
+        <!-- Error State -->
+        <div v-else-if="error" class="flex h-screen items-center justify-center">
+            <div class="text-red-500 text-center">
+                <i class="fas fa-exclamation-triangle text-4xl mb-2"></i>
+                <p class="text-xl">{{ error }}</p>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div v-else>
+            <!-- Banner & Header -->
+            <header class="relative bg-banner h-64 md:h-80 shadow-lg">
+                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
+                <div class="absolute -bottom-16 left-0 right-0 flex justify-center">
+                    <img :src="'./main/' + profile.picture" alt="Avatar" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-xl object-cover">
+                </div>
+            </header>
+            
+            <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
+                <!-- Profile Info -->
+                <div class="text-center mb-12">
+                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{{ profile.handleAndPenName }}</h1>
+                    <p class="text-lg text-gray-500 mb-4">{{ profile.englishName }}</p>
+                    <div class="flex justify-center flex-wrap gap-2 mb-6">
+                        <span class="badge bg-indigo-100 text-indigo-800"><i class="fas fa-user-tag mr-1"></i>{{ profile.basicInfo }}</span>
+                    </div>
+                    <p class="max-w-2xl mx-auto text-gray-600 leading-relaxed">{{ profile.bio }}</p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Knowledge Base -->
+                    <div class="card">
+                        <h2 class="text-xl font-bold mb-4 flex items-center text-gray-800">
+                            <i class="fas fa-brain text-indigo-500 mr-2"></i> 理论知识库
+                        </h2>
+                        <p class="text-gray-600 leading-relaxed">{{ profile.knowledgeBase }}</p>
+                    </div>
+                    
+                    <!-- Technical Skills -->
+                    <div class="card">
+                        <h2 class="text-xl font-bold mb-4 flex items-center text-gray-800">
+                            <i class="fas fa-code text-blue-500 mr-2"></i> 技术栈
+                        </h2>
+                        
+                        <div class="mb-3">
+                            <h3 class="text-sm font-semibold text-gray-500 uppercase mb-2">主力语言</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span v-for="lang in profile.technicalSkills.primaryLanguages" :key="lang" class="badge bg-blue-100 text-blue-800">{{ lang }}</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <h3 class="text-sm font-semibold text-gray-500 uppercase mb-2">熟悉语言</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span v-for="lang in profile.technicalSkills.familiarLanguages" :key="lang" class="badge bg-green-100 text-green-800">{{ lang }}</span>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-sm font-semibold text-gray-500 uppercase mb-2">框架与中间件</h3>
+                            <div class="flex flex-wrap gap-2">
+                                <span v-for="tech in Object.values(profile.technicalSkills.techStack).flat()" :key="tech" class="badge bg-purple-100 text-purple-800">{{ tech }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Current Projects -->
+                    <div class="card md:col-span-2">
+                        <h2 class="text-xl font-bold mb-4 flex items-center text-gray-800">
+                            <i class="fas fa-project-diagram text-orange-500 mr-2"></i> 当前项目
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <!-- Crawler -->
+                            <div v-if="profile.currentProjects.featureRichCrawlerLibrary" class="border border-gray-200 rounded-lg p-4 hover:border-orange-300 transition-colors">
+                                <h3 class="font-bold text-gray-800 mb-2"><i class="fas fa-spider text-orange-400 mr-1"></i> 多功能爬虫库</h3>
+                                <p class="text-sm text-gray-600 mb-2">状态: <span class="text-orange-600 font-medium">{{ profile.currentProjects.featureRichCrawlerLibrary.status }}</span></p>
+                                <div class="flex flex-wrap gap-1">
+                                    <span v-for="f in profile.currentProjects.featureRichCrawlerLibrary.features" :key="f" class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">{{ f }}</span>
+                                </div>
+                            </div>
+                            <!-- Backend Web -->
+                            <div v-if="profile.currentProjects.backendWebsite" class="border border-gray-200 rounded-lg p-4 hover:border-orange-300 transition-colors">
+                                <h3 class="font-bold text-gray-800 mb-2"><i class="fas fa-server text-blue-400 mr-1"></i> 后端服务网站</h3>
+                                <p class="text-sm text-gray-600">状态: <span class="text-blue-600 font-medium">{{ profile.currentProjects.backendWebsite.status }}</span></p>
+                            </div>
+                            <!-- Todo -->
+                            <div v-if="profile.currentProjects.todoList && profile.currentProjects.todoList.length > 0" class="border border-gray-200 rounded-lg p-4 bg-gray-50 border-dashed">
+                                <h3 class="font-bold text-gray-800 mb-2"><i class="fas fa-list-check text-green-500 mr-1"></i> 待办计划</h3>
+                                <ul class="list-disc list-inside text-sm text-gray-600">
+                                    <li v-for="todo in profile.currentProjects.todoList" :key="todo">{{ todo }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Artistic Creation -->
+                    <div class="card md:col-span-2">
+                        <h2 class="text-xl font-bold mb-4 flex items-center text-gray-800">
+                            <i class="fas fa-feather-alt text-pink-500 mr-2"></i> 艺术创作
+                        </h2>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="font-bold text-gray-700 mb-2"><i class="fas fa-book-open text-pink-400 mr-1"></i> 诗词</h3>
+                                <p class="text-gray-600 italic bg-pink-50 p-3 rounded-lg border-l-4 border-pink-400">{{ profile.artisticCreation.poetry }}</p>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-700 mb-2"><i class="fas fa-globe text-indigo-400 mr-1"></i> 小说世界观设定</h3>
+                                <p class="text-sm text-gray-500 mb-2">{{ profile.artisticCreation.fiction.description }}</p>
+                                <ul class="space-y-1">
+                                    <li v-for="(wv, index) in profile.artisticCreation.fiction.worldviews" :key="index" class="text-gray-600 text-sm flex items-start">
+                                        <i class="fas fa-star text-yellow-400 mt-1 mr-2 text-xs"></i> {{ wv }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Friend Links -->
+                    <div class="card md:col-span-2">
+                        <h2 class="text-xl font-bold mb-4 flex items-center text-gray-800">
+                            <i class="fas fa-link text-green-500 mr-2"></i> 友情链接
+                        </h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                            <a v-for="friend in profile.friendLinks" :key="friend.name" :href="friend.url" target="_blank" class="flex items-center p-3 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors hover:border-green-300 group">
+                                <img :src="'./main/' + friend.picture" :alt="friend.name" class="w-12 h-12 rounded-full object-cover mr-3 border border-gray-200 group-hover:border-green-400 transition-colors">
+                                <div>
+                                    <h4 class="font-bold text-gray-800 group-hover:text-green-600 transition-colors">{{ friend.name }}</h4>
+                                    <p class="text-xs text-gray-500">{{ friend.description }}</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </main>
+            
+            <!-- Footer -->
+            <footer class="bg-white border-t border-gray-200 mt-12 py-8 text-center text-gray-500">
+                <p>© {{ new Date().getFullYear() }} {{ profile.handleAndPenName }}. All rights reserved.</p>
+                <p class="text-sm mt-2">Built with <i class="fas fa-heart text-red-500"></i> using Vue 3 & Tailwind CSS</p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        const { createApp, ref, onMounted } = Vue;
+
+        createApp({
+            setup() {
+                const profile = ref(null);
+                const loading = ref(true);
+                const error = ref(null);
+
+                // fetchProfileData 获取本地 JSON 数据
+                // 参数: 无
+                // 返回: 无
+                // 说明: 异步请求 main/info.json，并赋值给响应式变量 profile
+                const fetchProfileData = async () => {
+                    try {
+                        const response = await fetch('./main/info.json');
+                        if (!response.ok) {
+                            throw new Error('加载数据失败，请确保文件存在并使用服务器运行。');
+                        }
+                        const data = await response.json();
+                        profile.value = data.profile;
+                    } catch (err) {
+                        error.value = err.message;
+                        console.error("Error fetching info.json:", err);
+                    } finally {
+                        loading.value = false;
+                    }
+                };
+
+                onMounted(() => {
+                    fetchProfileData();
+                });
+
+                return {
+                    profile,
+                    loading,
+                    error
+                };
+            }
+        }).mount('#app');
+    </script>
+</body>
+</html>

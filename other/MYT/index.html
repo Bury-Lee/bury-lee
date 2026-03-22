@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第47日份麦芽唐 - 小画师主页</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- 引入一些可爱的字体图标 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-decor">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="container">
+        <!-- 头部/个人简介 -->
+        <header class="card profile-header">
+            <div class="avatar-container">
+                <div class="avatar-placeholder" style="background: none; border: none; box-shadow: none;">
+                    <!-- 头像使用这个 -->
+                    <img src="picture/Image_1774187732093_334.png" alt="头像" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 15px rgba(155, 137, 179, 0.5); border: 4px solid white;">
+                </div>
+            </div>
+            <div class="profile-info">
+                <h1 id="homepage-name">加载中...</h1>
+                <div class="tags">
+                    <span class="tag" id="alias">...</span>
+                    <span class="tag identity" id="identity">...</span>
+                </div>
+                <p class="abstract" id="abstract">...</p>
+            </div>
+        </header>
+
+        <!-- 通知/版权声明 -->
+        <div class="notice-bar">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <span id="notice">...</span>
+        </div>
+
+        <div class="grid-layout">
+            <!-- 约稿信息 -->
+            <section class="card commission-card">
+                <h2><i class="fa-solid fa-palette"></i> 约稿说明</h2>
+                <div class="products" id="main-products">
+                    <!-- 动态加载主要接稿类型 -->
+                </div>
+                <p class="details" id="details">...</p>
+            </section>
+
+            <!-- 平台与社群 -->
+            <section class="card community-card">
+                <h2><i class="fa-solid fa-users"></i> 社交与社群</h2>
+                <div class="platforms" id="platforms">
+                    <!-- 动态加载平台信息 -->
+                </div>
+                <div class="community-box">
+                    <i class="fa-brands fa-qq"></i>
+                    <p id="community">...</p>
+                </div>
+            </section>
+        </div>
+
+        <!-- 作品展示区 -->
+        <section class="card gallery-section">
+            <h2><i class="fa-solid fa-image"></i> 作品展示</h2>
+            <div class="gallery" id="gallery">
+                <!-- 图片显示以上路径 -->
+                <div class="gallery-item"><img src="picture/Image_1774187196713_147.jpg" alt="作品" style="width:100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
+                <div class="gallery-item"><img src="picture/Image_1774187623678_895.jpg" alt="作品" style="width:100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
+                <div class="gallery-item"><img src="picture/Image_1774187625843_40.jpg" alt="作品" style="width:100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
+                <div class="gallery-item"><img src="picture/Image_1774187633450_256.jpg" alt="作品" style="width:100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
+                <div class="gallery-item"><img src="picture/Image_1774187643496_533.jpg" alt="作品" style="width:100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
+                <div class="gallery-item"><img src="picture/Image_1774187657168_184.jpg" alt="作品" style="width:100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>© <span id="year">2026</span> <span id="footer-name">第47日份麦芽唐</span>. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,10 +1,7 @@
 name = "bury-lee"
-main = "src/index.js"
 compatibility_date = "2026-03-22"
 compatibility_flags = ["nodejs_compat"]
 
 # 绑定静态资产目录
-# 因为您的项目有一个 main 文件夹包含 index.html，我们将其绑定给 Worker
 [assets]
-directory = "main"
-binding = "ASSETS"
+directory = "."

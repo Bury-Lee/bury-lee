@@ -4,238 +4,438 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>李葬/星梦 - 个人主页</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Vue 3 -->
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #0f172a;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --card-bg: #1e293b;
+            --card-hover: #334155;
+            --border: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
         body {
-            font-family: 'Roboto', 'Noto Serif SC', sans-serif;
-            background-color: #f9fafb;
-            color: #1f2937;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,0.2) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,0.2) 0, transparent 50%);
+            background-attachment: fixed;
+            min-height: 100vh;
         }
-        .bg-banner {
-            background-image: url('./main/Image_1774187732093_334.png');
-            background-size: cover;
-            background-position: center;
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
         }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+            padding: 2rem;
+            background: rgba(30, 41, 59, 0.5);
+            border-radius: 1.5rem;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s ease;
+        }
+
+        .hero:hover {
+            transform: translateY(-5px);
+            border-color: rgba(56, 189, 248, 0.5);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.3);
+            flex-shrink: 0;
+        }
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-content .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content .bio {
+            font-size: 1rem;
+            color: var(--text-primary);
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        h2 i {
+            color: var(--accent);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        /* Cards */
         .card {
-            background: white;
+            background: var(--card-bg);
             border-radius: 1rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             padding: 1.5rem;
-            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
+
         .card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-color: var(--accent);
         }
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            font-weight: 500;
+
+        .card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tag {
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--accent);
+            padding: 0.3rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.9rem;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: background 0.3s;
+        }
+
+        .tag:hover {
+            background: rgba(56, 189, 248, 0.2);
+        }
+
+        /* Lists */
+        ul {
+            list-style-position: inside;
+            color: var(--text-secondary);
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Friend Links */
+        .friend-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+            position: relative;
+            overflow: hidden;
+            padding: 1.5rem;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .friend-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .friend-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            z-index: 1;
+            background-color: var(--card-hover);
+        }
+
+        .friend-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .friend-name {
+            font-weight: bold;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .friend-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="app" class="min-h-screen">
-        <!-- Loading State -->
-        <div v-if="loading" class="flex h-screen items-center justify-center">
-            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600"></div>
-            <span class="ml-3 text-lg text-gray-600">加载中...</span>
-        </div>
-        
-        <!-- Error State -->
-        <div v-else-if="error" class="flex h-screen items-center justify-center">
-            <div class="text-red-500 text-center">
-                <i class="fas fa-exclamation-triangle text-4xl mb-2"></i>
-                <p class="text-xl">{{ error }}</p>
-            </div>
-        </div>
-        
-        <!-- Main Content -->
-        <div v-else>
-            <!-- Banner & Header -->
-            <header class="relative bg-banner h-64 md:h-80 shadow-lg">
-                <div class="absolute inset-0 bg-black bg-opacity-40"></div>
-                <div class="absolute -bottom-16 left-0 right-0 flex justify-center">
-                    <img :src="'./main/' + profile.picture" alt="Avatar" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-white shadow-xl object-cover">
-                </div>
-            </header>
-            
-            <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
-                <!-- Profile Info -->
-                <div class="text-center mb-12">
-                    <h1 class="text-3xl md:text-4xl font-bold text-gray-900 mb-2">{{ profile.handleAndPenName }}</h1>
-                    <p class="text-lg text-gray-500 mb-4">{{ profile.englishName }}</p>
-                    <div class="flex justify-center flex-wrap gap-2 mb-6">
-                        <span class="badge bg-indigo-100 text-indigo-800"><i class="fas fa-user-tag mr-1"></i>{{ profile.basicInfo }}</span>
-                    </div>
-                    <p class="max-w-2xl mx-auto text-gray-600 leading-relaxed">{{ profile.bio }}</p>
-                </div>
-                
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    
-                    <!-- Knowledge Base -->
-                    <div class="card">
-                        <h2 class="text-xl font-bold mb-4 flex items-center text-gray-800">
-                            <i class="fas fa-brain text-indigo-500 mr-2"></i> 理论知识库
-                        </h2>
-                        <p class="text-gray-600 leading-relaxed">{{ profile.knowledgeBase }}</p>
-                    </div>
-                    
-                    <!-- Technical Skills -->
-                    <div class="card">
-                        <h2 class="text-xl font-bold mb-4 flex items-center text-gray-800">
-                            <i class="fas fa-code text-blue-500 mr-2"></i> 技术栈
-                        </h2>
-                        
-                        <div class="mb-3">
-                            <h3 class="text-sm font-semibold text-gray-500 uppercase mb-2">主力语言</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span v-for="lang in profile.technicalSkills.primaryLanguages" :key="lang" class="badge bg-blue-100 text-blue-800">{{ lang }}</span>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <h3 class="text-sm font-semibold text-gray-500 uppercase mb-2">熟悉语言</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span v-for="lang in profile.technicalSkills.familiarLanguages" :key="lang" class="badge bg-green-100 text-green-800">{{ lang }}</span>
-                            </div>
-                        </div>
-                        
-                        <div>
-                            <h3 class="text-sm font-semibold text-gray-500 uppercase mb-2">框架与中间件</h3>
-                            <div class="flex flex-wrap gap-2">
-                                <span v-for="tech in Object.values(profile.technicalSkills.techStack).flat()" :key="tech" class="badge bg-purple-100 text-purple-800">{{ tech }}</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Current Projects -->
-                    <div class="card md:col-span-2">
-                        <h2 class="text-xl font-bold mb-4 flex items-center text-gray-800">
-                            <i class="fas fa-project-diagram text-orange-500 mr-2"></i> 当前项目
-                        </h2>
-                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                            <!-- Crawler -->
-                            <div v-if="profile.currentProjects.featureRichCrawlerLibrary" class="border border-gray-200 rounded-lg p-4 hover:border-orange-300 transition-colors">
-                                <h3 class="font-bold text-gray-800 mb-2"><i class="fas fa-spider text-orange-400 mr-1"></i> 多功能爬虫库</h3>
-                                <p class="text-sm text-gray-600 mb-2">状态: <span class="text-orange-600 font-medium">{{ profile.currentProjects.featureRichCrawlerLibrary.status }}</span></p>
-                                <div class="flex flex-wrap gap-1">
-                                    <span v-for="f in profile.currentProjects.featureRichCrawlerLibrary.features" :key="f" class="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded">{{ f }}</span>
-                                </div>
-                            </div>
-                            <!-- Backend Web -->
-                            <div v-if="profile.currentProjects.backendWebsite" class="border border-gray-200 rounded-lg p-4 hover:border-orange-300 transition-colors">
-                                <h3 class="font-bold text-gray-800 mb-2"><i class="fas fa-server text-blue-400 mr-1"></i> 后端服务网站</h3>
-                                <p class="text-sm text-gray-600">状态: <span class="text-blue-600 font-medium">{{ profile.currentProjects.backendWebsite.status }}</span></p>
-                            </div>
-                            <!-- Todo -->
-                            <div v-if="profile.currentProjects.todoList && profile.currentProjects.todoList.length > 0" class="border border-gray-200 rounded-lg p-4 bg-gray-50 border-dashed">
-                                <h3 class="font-bold text-gray-800 mb-2"><i class="fas fa-list-check text-green-500 mr-1"></i> 待办计划</h3>
-                                <ul class="list-disc list-inside text-sm text-gray-600">
-                                    <li v-for="todo in profile.currentProjects.todoList" :key="todo">{{ todo }}</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Artistic Creation -->
-                    <div class="card md:col-span-2">
-                        <h2 class="text-xl font-bold mb-4 flex items-center text-gray-800">
-                            <i class="fas fa-feather-alt text-pink-500 mr-2"></i> 艺术创作
-                        </h2>
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div>
-                                <h3 class="font-bold text-gray-700 mb-2"><i class="fas fa-book-open text-pink-400 mr-1"></i> 诗词</h3>
-                                <p class="text-gray-600 italic bg-pink-50 p-3 rounded-lg border-l-4 border-pink-400">{{ profile.artisticCreation.poetry }}</p>
-                            </div>
-                            <div>
-                                <h3 class="font-bold text-gray-700 mb-2"><i class="fas fa-globe text-indigo-400 mr-1"></i> 小说世界观设定</h3>
-                                <p class="text-sm text-gray-500 mb-2">{{ profile.artisticCreation.fiction.description }}</p>
-                                <ul class="space-y-1">
-                                    <li v-for="(wv, index) in profile.artisticCreation.fiction.worldviews" :key="index" class="text-gray-600 text-sm flex items-start">
-                                        <i class="fas fa-star text-yellow-400 mt-1 mr-2 text-xs"></i> {{ wv }}
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Friend Links -->
-                    <div class="card md:col-span-2">
-                        <h2 class="text-xl font-bold mb-4 flex items-center text-gray-800">
-                            <i class="fas fa-link text-green-500 mr-2"></i> 友情链接
-                        </h2>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                            <a v-for="friend in profile.friendLinks" :key="friend.name" :href="friend.url" target="_blank" class="flex items-center p-3 border border-gray-100 rounded-lg hover:bg-gray-50 transition-colors hover:border-green-300 group">
-                                <img :src="'./main/' + friend.picture" :alt="friend.name" class="w-12 h-12 rounded-full object-cover mr-3 border border-gray-200 group-hover:border-green-400 transition-colors">
-                                <div>
-                                    <h4 class="font-bold text-gray-800 group-hover:text-green-600 transition-colors">{{ friend.name }}</h4>
-                                    <p class="text-xs text-gray-500">{{ friend.description }}</p>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    
-                </div>
-            </main>
-            
-            <!-- Footer -->
-            <footer class="bg-white border-t border-gray-200 mt-12 py-8 text-center text-gray-500">
-                <p>© {{ new Date().getFullYear() }} {{ profile.handleAndPenName }}. All rights reserved.</p>
-                <p class="text-sm mt-2">Built with <i class="fas fa-heart text-red-500"></i> using Vue 3 & Tailwind CSS</p>
-            </footer>
+    <div class="container" id="app">
+        <!-- Content will be injected here by JS -->
+        <div style="text-align: center; padding: 5rem;">
+            <h2><i class="fas fa-spinner fa-spin"></i> 正在加载主页信息...</h2>
         </div>
     </div>
 
     <script>
-        const { createApp, ref, onMounted } = Vue;
+        // 内置备用数据，以防 file:// 协议下跨域限制导致无法读取本地 JSON
+        const fallbackData = {
+          "profile": {
+            "picture": "src/Image_1765633314146.jpg",
+            "handleAndPenName": "李葬/星梦",
+            "englishName": "Bury·Lee,StarDreamer",
+            "basicInfo": "编程爱好 & 诗人 & 小说创作",
+            "bio": "热衷现代化开发（尤其是互联网）与喜欢了解AI技术，喜欢尝试新技术并分享经验。艺术创作方面偏向于写悲伤基调的诗词，虽未正式创作小说(因为文笔不好)，但已构建了四个宏大的世界观(?)",
+            "knowledgeBase": "操作系统、组成原理、数据结构、数据库、计算机网络、机器学习、少量深度学习及分布式知识。",
+            "technicalSkills": {
+              "primaryLanguages": ["Python", "Go"],
+              "familiarLanguages": ["C/C++", "Java", "Rust"],
+              "techStack": {
+                "aiAndData": ["PyTorch", "Torchvision"],
+                "backendAndServices": ["Flask", "Gin"],
+                "storageAndRetrieval": ["MySQL", "Redis", "Elasticsearch"]
+              }
+            },
+            "currentProjects": {
+              "featureRichCrawlerLibrary": {
+                "status": "正在开发中",
+                "features": ["高并发", "面向对象设计", "对非专业人士友好"]
+              },
+              "backendWebsite": {
+                "status": "正在开发一个带后端服务的较简易网站"
+              },
+              "todoList": ["开发一个分布式的云盘系统"]
+            },
+            "artisticCreation": {
+              "poetry": "偏好以“悲伤”为基调的词作。",
+              "fiction": {
+                "description": "目前处于世界观构建阶段，有以下四个世界观设定：(由于文笔差迟迟未写)",
+                "worldviews": [
+                  "深渊世界（黑暗类克苏鲁风格）",
+                  "传奇之后（带魔法体系的玄幻风格）",
+                  "传说之后（带神明和魔法体系的科幻风格）",
+                  "灰烬时代（科幻末世风格）"
+                ]
+              }
+            },
+            "friendLinks": [
+              {
+                "name": "麦芽唐",
+                "picture": "src/Image_1774187732093_334.png",
+                "description": "小动物画师",
+                "url": "other/MYT/index.html"
+              }
+            ]
+          }
+        };
 
-        createApp({
-            setup() {
-                const profile = ref(null);
-                const loading = ref(true);
-                const error = ref(null);
+        // 渲染页面的主函数
+        function renderPage(data) {
+            const p = data.profile;
+            const app = document.getElementById('app');
+            
+            app.innerHTML = `
+                <!-- 头部个人信息 -->
+                <div class="hero">
+                    <img src="${p.picture}" alt="Avatar" class="avatar" onerror="this.src='https://via.placeholder.com/150/1e293b/38bdf8?text=Avatar'">
+                    <div class="hero-content">
+                        <h1>${p.handleAndPenName}</h1>
+                        <div class="subtitle">
+                            <strong>${p.englishName}</strong> | ${p.basicInfo}
+                        </div>
+                        <p class="bio">${p.bio}</p>
+                    </div>
+                </div>
 
-                // fetchProfileData 获取本地 JSON 数据
-                // 参数: 无
-                // 返回: 无
-                // 说明: 异步请求 main/info.json，并赋值给响应式变量 profile
-                const fetchProfileData = async () => {
-                    try {
-                        const response = await fetch('./main/info.json');
-                        if (!response.ok) {
-                            throw new Error('加载数据失败，请确保文件存在并使用服务器运行。');
-                        }
-                        const data = await response.json();
-                        profile.value = data.profile;
-                    } catch (err) {
-                        error.value = err.message;
-                        console.error("Error fetching info.json:", err);
-                    } finally {
-                        loading.value = false;
-                    }
-                };
+                <!-- 技能与知识储备 -->
+                <section>
+                    <h2><i class="fas fa-laptop-code"></i> 技术与知识储备</h2>
+                    <div class="grid-2">
+                        <div class="card">
+                            <h3><i class="fas fa-code"></i> 编程语言</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">主要语言</div>
+                                <div class="tags">
+                                    ${p.technicalSkills.primaryLanguages.map(l => `<span class="tag">${l}</span>`).join('')}
+                                </div>
+                            </div>
+                            <div>
+                                <div style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">熟悉语言</div>
+                                <div class="tags">
+                                    ${p.technicalSkills.familiarLanguages.map(l => `<span class="tag">${l}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3><i class="fas fa-layer-group"></i> 技术栈</h3>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">AI与数据</div>
+                                <div class="tags">
+                                    ${p.technicalSkills.techStack.aiAndData.map(t => `<span class="tag">${t}</span>`).join('')}
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1rem;">
+                                <div style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">后端与服务</div>
+                                <div class="tags">
+                                    ${p.technicalSkills.techStack.backendAndServices.map(t => `<span class="tag">${t}</span>`).join('')}
+                                </div>
+                            </div>
+                            <div>
+                                <div style="color: var(--text-secondary); margin-bottom: 0.5rem; font-size: 0.9rem;">存储与检索</div>
+                                <div class="tags">
+                                    ${p.technicalSkills.techStack.storageAndRetrieval.map(t => `<span class="tag">${t}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card" style="grid-column: 1 / -1;">
+                            <h3><i class="fas fa-brain"></i> 知识底座</h3>
+                            <p style="color: var(--text-secondary);">${p.knowledgeBase}</p>
+                        </div>
+                    </div>
+                </section>
 
-                onMounted(() => {
-                    fetchProfileData();
-                });
+                <!-- 当前项目 -->
+                <section>
+                    <h2><i class="fas fa-project-diagram"></i> 当前项目 & 计划</h2>
+                    <div class="grid-2">
+                        <div class="card">
+                            <h3> GoSight</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem;">状态：${p.currentProjects.featureRichCrawlerLibrary.status}</p>
+                            <div class="tags">
+                                ${p.currentProjects.featureRichCrawlerLibrary.features.map(f => `<span class="tag">${f}</span>`).join('')}
+                            </div>
+                        </div>
+                        <div class="card">
+                            <h3> 小网站</h3>
+                            <p style="color: var(--text-secondary);">${p.currentProjects.backendWebsite.status}</p>
+                        </div>
+                        <div class="card">
+                            <h3>(To-Do)</h3>
+                            <ul>
+                                ${p.currentProjects.todoList.map(t => `<li>${t}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </section>
 
-                return {
-                    profile,
-                    loading,
-                    error
-                };
-            }
-        }).mount('#app');
+                <!-- 艺术创作 -->
+                <section>
+                    <h2><i class="fas fa-feather-alt"></i> 艺术创作</h2>
+                    <div class="grid-2">
+                        <div class="card">
+                            <h3><i class="fas fa-book-open"></i> 诗词</h3>
+                            <p style="color: var(--text-secondary);">${p.artisticCreation.poetry}</p>
+                        </div>
+                        <div class="card">
+                            <h3><i class="fas fa-globe"></i> 小说世界观</h3>
+                            <p style="color: var(--text-secondary); margin-bottom: 1rem; font-size: 0.9rem;">${p.artisticCreation.fiction.description}</p>
+                            <ul>
+                                ${p.artisticCreation.fiction.worldviews.map(w => `<li>${w}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- 友情链接 -->
+                <section>
+                    <h2><i class="fas fa-user-friends"></i> 友情链接</h2>
+                    <div class="grid-2">
+                        ${p.friendLinks.map(link => `
+                            <a href="${link.url}" target="_blank" class="friend-card">
+                                <img src="${link.picture}" class="friend-avatar" onerror="this.src='https://via.placeholder.com/60/1e293b/38bdf8?text=Friend'">
+                                <div class="friend-content">
+                                    <div class="friend-name">${link.name}</div>
+                                    <div class="friend-desc">${link.description}</div>
+                                </div>
+                            </a>
+                        `).join('')}
+                    </div>
+                </section>
+                
+                <footer style="text-align: center; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid var(--border); color: var(--text-secondary);">
+                    <p>© 2026 ${p.handleAndPenName}. Designed with 💙</p>
+                </footer>
+            `;
+        }
+
+        // 尝试加载同目录下的 info.json 文件
+        // 如果是在本地直接双击打开 html（file://），fetch 可能会跨域报错，此时使用 fallbackData
+        fetch('src/info.json')
+            .then(response => {
+                if (!response.ok) throw new Error('网络响应不正常');
+                return response.json();
+            })
+            .then(data => renderPage(data))
+            .catch(error => {
+                console.log('读取 info.json 失败 (可能因 file:// 协议限制)，已使用内置备用数据:', error);
+                renderPage(fallbackData);
+            });
     </script>
 </body>
 </html>

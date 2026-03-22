@@ -1,0 +1,347 @@
+:root {
+    --primary-color: #FFD54F; /* 柠檬黄基调 */
+    --primary-light: #FFE082;
+    --primary-dark: #FFCA28;
+    --accent-blue: #4FC3F7; /* 亮蓝 */
+    --accent-coral: #FF8A65; /* 珊瑚色 */
+    --accent-green: #81C784; /* 薄荷绿 */
+    --bg-color: #FFFDE7; /* 浅黄背景 */
+    --card-bg: #FFFFFF;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --border-radius: 16px;
+    --shadow-light: 0 4px 12px rgba(255, 213, 79, 0.2);
+    --shadow-hover: 0 8px 24px rgba(255, 213, 79, 0.4);
+    --transition: all 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    background-image: radial-gradient(var(--primary-light) 10%, transparent 10%);
+    background-size: 40px 40px;
+    background-position: 0 0, 20px 20px;
+    background-attachment: fixed;
+}
+
+/* 容器居中 */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 头部样式 */
+.profile-header {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-light);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-header::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    background-color: var(--primary-light);
+    border-radius: 50%;
+    z-index: 0;
+    opacity: 0.5;
+}
+
+.profile-header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    right: -30px;
+    width: 100px;
+    height: 100px;
+    background-color: var(--accent-blue);
+    border-radius: 50%;
+    z-index: 0;
+    opacity: 0.2;
+}
+
+.avatar-container {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+
+#avatar {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid var(--primary-color);
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+}
+
+#avatar:hover {
+    transform: rotate(10deg) scale(1.05);
+}
+
+#name {
+    font-size: 2.2em;
+    font-weight: 700;
+    color: var(--text-main);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 5px;
+}
+
+#english-name {
+    font-size: 1em;
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.tags {
+    margin-bottom: 15px;
+    position: relative;
+    z-index: 1;
+}
+
+.tag {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin: 0 5px;
+}
+
+.tag-yellow { background-color: var(--primary-color); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.1); }
+.tag-blue { background-color: var(--accent-blue); color: #fff; }
+
+.bio {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.05em;
+    color: var(--text-muted);
+    position: relative;
+    z-index: 1;
+}
+
+/* 卡片通用样式 */
+.card {
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow-light);
+    transition: var(--transition);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-hover);
+    transform: translateY(-3px);
+}
+
+.card h3 {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    border-bottom: 3px solid var(--primary-light);
+    padding-bottom: 10px;
+    display: inline-block;
+}
+
+.card h3 i {
+    color: var(--primary-dark);
+    margin-right: 10px;
+}
+
+.card h4 {
+    font-size: 1.1em;
+    color: var(--text-main);
+    margin: 15px 0 10px;
+}
+
+/* 技能与知识 */
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-tag {
+    background: #f0f0f0;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 0.9em;
+    color: var(--text-main);
+    transition: var(--transition);
+    border: 1px solid #e0e0e0;
+}
+
+.skill-tag:hover {
+    background: var(--primary-light);
+    color: #333;
+    border-color: var(--primary-color);
+}
+
+/* 颜色区分技能 */
+.skill-tag.lang-primary { border-color: var(--primary-color); background: #FFF8E1; }
+.skill-tag.lang-familiar { border-color: var(--accent-blue); background: #E1F5FE; }
+.skill-tag.tech-stack { border-color: var(--accent-coral); background: #FBE9E7; }
+
+/* 项目区域 */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    background: var(--bg-color);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 5px solid var(--accent-coral);
+    transition: var(--transition);
+}
+
+.project-card:hover {
+    background: #FFF;
+    box-shadow: 0 4px 15px rgba(255, 138, 101, 0.2);
+    transform: scale(1.02);
+}
+
+.project-card.todo {
+    border-left-color: var(--accent-green);
+}
+
+.project-card h4 {
+    margin-top: 0;
+    color: var(--text-main);
+}
+
+.project-card p {
+    font-size: 0.9em;
+    color: var(--text-muted);
+}
+
+.project-feature {
+    display: inline-block;
+    font-size: 0.8em;
+    background: rgba(255, 138, 101, 0.1);
+    color: var(--accent-coral);
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-right: 5px;
+    margin-top: 8px;
+}
+
+/* 艺术创作 */
+.art-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 600px) {
+    .art-content {
+        grid-template-columns: 1fr;
+    }
+}
+
+.worldviews-list {
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+.worldviews-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+    color: var(--text-muted);
+}
+
+.worldviews-list li::before {
+    content: '✦';
+    position: absolute;
+    left: 0;
+    color: var(--primary-dark);
+}
+
+/* 友情链接 */
+.friends-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.friend-card {
+    display: flex;
+    align-items: center;
+    background: var(--bg-color);
+    padding: 15px;
+    border-radius: 12px;
+    text-decoration: none;
+    color: var(--text-main);
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.friend-card:hover {
+    background: #FFF;
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(255, 213, 79, 0.3);
+    transform: translateY(-3px);
+}
+
+.friend-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+    object-fit: cover;
+    border: 2px solid var(--primary-light);
+}
+
+.friend-info h4 {
+    margin: 0 0 5px 0;
+    color: var(--primary-dark);
+}
+
+.friend-info p {
+    margin: 0;
+    font-size: 0.85em;
+    color: var(--text-muted);
+}
+
+/* 底部 */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    color: var(--text-muted);
+    font-size: 0.9em;
+}
+
+footer span {
+    font-weight: bold;
+    color: var(--primary-dark);
+}

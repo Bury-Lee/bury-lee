@@ -203,6 +203,93 @@ h2 i {
     color: var(--primary-color);
 }
 
+/* 爱好与OC信息 */
+.about-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.hobby-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    list-style: none;
+    padding: 0;
+}
+
+.hobby-list li {
+    background: rgba(155, 137, 179, 0.1);
+    color: var(--primary-color);
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(155, 137, 179, 0.3);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.hobby-list li:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(155, 137, 179, 0.2);
+}
+
+.oc-card {
+    padding-top: 25px;
+    border-top: 1px dashed rgba(155, 137, 179, 0.3);
+}
+
+.oc-content {
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    background: rgba(255, 255, 255, 0.6);
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid rgba(155, 137, 179, 0.1);
+    transition: all 0.3s ease;
+}
+
+.oc-content:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(155, 137, 179, 0.15);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.oc-content img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    border: 4px solid white;
+    flex-shrink: 0;
+}
+
+.oc-desc {
+    flex: 1;
+}
+
+.oc-desc p {
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+    color: var(--text-main);
+    line-height: 1.7;
+}
+
+.oc-desc p:last-child {
+    margin-bottom: 0;
+}
+
+.oc-desc strong {
+    color: var(--primary-color);
+}
+
 /* 约稿说明 */
 .products {
     display: flex;
@@ -313,5 +400,17 @@ footer {
     }
     .grid-layout {
         grid-template-columns: 1fr;
+    }
+    .oc-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px 15px;
+    }
+    .oc-content img {
+        width: 100%;
+        max-width: 180px;
+        height: auto;
+        aspect-ratio: 1;
     }
 }

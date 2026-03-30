@@ -1,87 +1,211 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>第47日份麦芽唐 - 小画师主页</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <!-- 引入一些可爱的字体图标 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <div class="background-decor">
-        <div class="blob blob-1"></div>
-        <div class="blob blob-2"></div>
-        <div class="blob blob-3"></div>
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
     </div>
 
     <div class="container">
-        <!-- 头部/个人简介 -->
-        <header class="card profile-header">
-            <div class="avatar-container">
-                <div class="avatar-placeholder" style="background: none; border: none; box-shadow: none;">
-                    <!-- 头像使用这个 -->
-                    <img src="picture/Image_1774187732093_334.png" alt="头像" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; box-shadow: 0 4px 15px rgba(155, 137, 179, 0.5); border: 4px solid white;">
-                </div>
-            </div>
-            <div class="profile-info">
-                <h1 id="homepage-name">加载中...</h1>
-                <div class="tags">
-                    <span class="tag" id="alias">...</span>
-                    <span class="tag identity" id="identity">...</span>
-                </div>
-                <p class="abstract" id="abstract">...</p>
-            </div>
-        </header>
+      <!-- 头部/个人简介 -->
+      <header class="card profile-header">
+        <div class="avatar-container">
+          <div
+            class="avatar-placeholder"
+            style="background: none; border: none; box-shadow: none"
+          >
+            <!-- 头像使用这个 -->
+            <img
+              src="picture/Image_1774187732093_334.png"
+              alt="头像"
+              style="
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                object-fit: cover;
+                box-shadow: 0 4px 15px rgba(155, 137, 179, 0.5);
+                border: 4px solid white;
+              "
+            />
+          </div>
+        </div>
+        <div class="profile-info">
+          <h1 id="homepage-name">加载中...</h1>
+          <div class="tags">
+            <span class="tag" id="alias">...</span>
+            <span class="tag identity" id="identity">...</span>
+          </div>
+          <p class="abstract" id="abstract">...</p>
+        </div>
+      </header>
 
-        <!-- 通知/版权声明 -->
-        <div class="notice-bar">
-            <i class="fa-solid fa-triangle-exclamation"></i>
-            <span id="notice">...</span>
+      <!-- 通知/版权声明 -->
+      <div class="notice-bar">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <span id="notice">...</span>
+      </div>
+
+      <!-- 新增/修改部分：爱好与OC信息 -->
+      <section class="card about-section">
+        <div class="hobbies-card">
+          <h2><i class="fas fa-heart"></i> 我的爱好</h2>
+          <ul class="hobby-list">
+            <li><i class="fas fa-tv"></i> 追番</li>
+            <li><i class="fas fa-book-open"></i> 看漫画</li>
+            <li><i class="fas fa-plane"></i> 旅游</li>
+            <li><i class="fas fa-bed"></i> 睡觉</li>
+            <li><i class="fas fa-staff-snake"></i> 撸蛇</li>
+            <li><i class="fas fa-cat"></i> 撸猫</li>
+            <li><i class="fas fa-paintbrush"></i> 养OC</li>
+          </ul>
         </div>
 
-        <div class="grid-layout">
-            <!-- 约稿信息 -->
-            <section class="card commission-card">
-                <h2><i class="fa-solid fa-palette"></i> 约稿说明</h2>
-                <div class="products" id="main-products">
-                    <!-- 动态加载主要接稿类型 -->
-                </div>
-                <p class="details" id="details">...</p>
-            </section>
-
-            <!-- 平台与社群 -->
-            <section class="card community-card">
-                <h2><i class="fa-solid fa-users"></i> 社交与社群</h2>
-                <div class="platforms" id="platforms">
-                    <!-- 动态加载平台信息 -->
-                </div>
-                <div class="community-box">
-                    <i class="fa-brands fa-qq"></i>
-                    <p id="community">...</p>
-                </div>
-            </section>
+        <div class="oc-card">
+          <h2><i class="fas fa-star"></i> 我的OC - 瑭珥-Auralith / Jasper·Aureole</h2>
+          <div class="oc-content">
+            <img src="picture/Image_1774187196713_132.jpg" alt="我的OC 瑭珥" />
+            <div class="oc-desc">
+              <p>🌟 <strong>设定：</strong>角是吸铁石的那种，触碰会被吸走魔力。没有牙齿，舌头吸食进食，可以吃抽象的欲望，也可以吃具体的食物，但不会获得能量，尝个味道。</p>
+              <p>🌟 <strong>背景：</strong>瑭珥是在魔界出生的一只罕见白化魔羊，在黑压压昏暗的魔界可谓是独树一帜，雪白的身体，喜欢亮晶晶的金银财宝，跟其他魔简直是格格不入。特殊的外表非但没有遭到其他魔的排斥，反倒惹魔注视，到哪里都是被人好奇的对象。（ps：瑭瑭不喜欢这种感觉，出门的时候会穿戴披风斗篷，包裹住自己，但是通常一点用都没有hhhhhh，折腾多了之后，对披风也是情有独钟了，收集了很多亮晶晶好看的披风，听其他魔说是一天一件（假的）。</p>
+              <p>🌟 <strong>习惯：</strong>作为一只恶魔，喜欢囤积还是很正常的吧，但是瑭瑭的囤积癖已经是病入膏肓的地步了。在自己的领地更是专门打造了仓库进行储存，对除了自己之外，其他人不可靠近，包括家人。自己的东西占有欲也是非常强哈。痴迷程度大概是经常要在里面才能安心睡着吧。趁瑭瑭不在，我们来看看瑭瑭的宝藏们～是披风n件、金银珠宝n件、假牙n个…</p>
+              <p>🌟 <strong>彩蛋：</strong>现在暂定是两个条件进入恶魔岛，一个是恶魔的许可（亲友恶魔和恶魔的君王），一个是特定的物品（这个看开店的恶魔喜好）。</p>
+            </div>
+          </div>
         </div>
 
-        <!-- 作品展示区 -->
-        <section class="card gallery-section">
-            <h2><i class="fa-solid fa-image"></i> 作品展示</h2>
-            <div class="gallery" id="gallery">
-                <!-- 图片显示以上路径 -->
-                <div class="gallery-item"><img src="picture/Image_1774187196713_147.jpg" alt="作品" style="width:100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
-                <div class="gallery-item"><img src="picture/Image_1774187623678_895.jpg" alt="作品" style="width:100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
-                <div class="gallery-item"><img src="picture/Image_1774187625843_40.jpg" alt="作品" style="width:100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
-                <div class="gallery-item"><img src="picture/Image_1774187633450_256.jpg" alt="作品" style="width:100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
-                <div class="gallery-item"><img src="picture/Image_1774187643496_533.jpg" alt="作品" style="width:100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
-                <div class="gallery-item"><img src="picture/Image_1774187657168_184.jpg" alt="作品" style="width:100%; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);"></div>
+        <div class="oc-card">
+          <h2><i class="fas fa-star"></i> 我的OC - 黔曜曜</h2>
+          <div class="oc-content">
+            <img src="picture/Image_1774187625843_401.jpg" alt="我的OC 黔曜曜" />
+            <div class="oc-desc">
+              <p>🌟 <strong>性格：</strong>小傲娇，能动手就不动手，绝对忠诚，干事很利索。似猫似兔，能歌善武，十分好斗。平时话少，不善交际，很靠谱，但也会有孩子气的一面。在四耳族里，武力至上。</p>
+              <p>🌟 <strong>外观：</strong>尾巴火焰可变化，耳朵尖尖和背部银灰色的物件都是金属，银灰色的物件可画可不画。</p>
+              <p>🌟 <strong>元素：</strong>星星、火焰、盔甲、武器（短刀、飞镖、苦无）。</p>
+              <p>🌟 <strong>背景：</strong>四耳作为战斗天赋极高的一族，一生追求武力至上，且只效忠一人，唯一的弱点是如果不在成年之前找到自己的目标，会导致内心混沌，失去平衡，直到被心魔吞噬，变成没有思想的行尸走肉。但其实四耳最开始不是四耳，是因为一次世界的重大灾难导致一部分兽族受到诅咒和改变，四耳其实是一种异变。强大的实力，缺陷也很明显，如果不能找到认定的那个人的话，变成行尸走肉难免会对其他种族造成麻烦，但是他们忠诚的属性又颇有口碑。直到现在都在寻找解除诅咒的方法。</p>
             </div>
+          </div>
+        </div>
+      </section>
+      <!-- /新增/修改部分 -->
+
+      <div class="grid-layout">
+        <!-- 约稿信息 -->
+        <section class="card commission-card">
+          <h2><i class="fa-solid fa-palette"></i> 约稿说明</h2>
+          <div class="products" id="main-products">
+            <!-- 动态加载主要接稿类型 -->
+          </div>
+          <p class="details" id="details">...</p>
         </section>
-        
-        <footer>
-            <p>© <span id="year">2026</span> <span id="footer-name">第47日份麦芽唐</span>-  这里是没有米的麦芽唐,也许未来会成为有米的麦芽唐.</p>
-        </footer>
+
+        <!-- 平台与社群 -->
+        <section class="card community-card">
+          <h2><i class="fa-solid fa-users"></i> 社交与社群</h2>
+          <div class="platforms" id="platforms">
+            <!-- 动态加载平台信息 -->
+          </div>
+          <div class="community-box">
+            <i class="fa-brands fa-qq"></i>
+            <p id="community">...</p>
+          </div>
+        </section>
+      </div>
+
+      <!-- 作品展示区 -->
+      <section class="card gallery-section">
+        <h2><i class="fa-solid fa-image"></i> 作品展示</h2>
+        <div class="gallery" id="gallery">
+          <!-- 图片显示以上路径 -->
+          <div class="gallery-item">
+            <img
+              src="picture/Image_1774187196713_147.jpg"
+              alt="作品"
+              style="
+                width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+              "
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="picture/Image_1774187623678_895.jpg"
+              alt="作品"
+              style="
+                width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+              "
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="picture/Image_1774187625843_40.jpg"
+              alt="作品"
+              style="
+                width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+              "
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="picture/Image_1774187633450_256.jpg"
+              alt="作品"
+              style="
+                width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+              "
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="picture/Image_1774187643496_533.jpg"
+              alt="作品"
+              style="
+                width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+              "
+            />
+          </div>
+          <div class="gallery-item">
+            <img
+              src="picture/Image_1774187657168_184.jpg"
+              alt="作品"
+              style="
+                width: 100%;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+              "
+            />
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <p>
+          © <span id="year">2026</span>
+          <span id="footer-name">第47日份麦芽唐</span>-
+          这里是没有米的麦芽唐,也许未来会成为有米的麦芽唐.
+        </p>
+      </footer>
     </div>
 
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
